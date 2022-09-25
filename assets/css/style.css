@@ -16,20 +16,61 @@ html, body {
     height: 100%;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+
+a:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 
 
 /********** Header **********/
 
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: .5rem;
+}
+
+#menu a {
+    display: block;
+    padding: .5rem;
+}
+
+
 /* Burguer */
 
-.container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.burguer {
+    display: none;
+    cursor: pointer;
 }
 
 #checkbox-menu {
+    max-width: 600px;
     position: absolute;
     opacity: 0;
 }
@@ -47,6 +88,7 @@ html, body {
     transform: rotate(45deg);
     top: 8px;
 }
+
 
 label {
     cursor: pointer;
@@ -77,4 +119,70 @@ label span:nth-child(2){
 
 label span:nth-child(3){
     top: 16px;
+}
+
+
+@media (max-width: 600px) {
+
+
+    #menu {
+        display: none;
+    }
+    
+    .burguer {
+        display: block;
+        cursor: pointer;
+    }
+
+    #checkbox-menu {
+        max-width: 600px;
+        position: absolute;
+        opacity: 0;
+    }
+
+    #checkbox-menu:checked + label span:nth-child(1) {
+        transform: rotate(-45deg);
+        top: 8px;
+    }
+
+    #checkbox-menu:checked + label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #checkbox-menu:checked + label span:nth-child(3) {
+        transform: rotate(45deg);
+        top: 8px;
+    }
+
+
+    label {
+        cursor: pointer;
+        position: relative;
+        display: block;
+        height: 22px;
+        width: 30px;
+    }
+
+
+    label span {
+        position: absolute;
+        display: block;
+        height: 5px;
+        width: 100%;
+        border-radius: 30px;
+        background: #414B3B;
+        transition: 0.25s esae-in-out;
+    }
+
+    label span:nth-child(1){
+        top: 0;
+    }
+
+    label span:nth-child(2){
+        top: 8px;
+    }
+
+    label span:nth-child(3){
+        top: 16px;
+    }
 }
