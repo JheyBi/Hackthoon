@@ -8,6 +8,8 @@
 
 html, body {
     height: 100%;
+    background: rgb(212,238,238);
+    background: linear-gradient(0deg, rgba(212,238,238,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 a{
@@ -44,28 +46,88 @@ a:hover {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#menu {
+#header-hotel {
     display: flex;
-    list-style: none;
-    gap: .5rem;
-}
-
-#menu a {
-    display: block;
-    padding: .5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #brasao {
+    position: absolute;
     width: 50px;
     height: 50px;
-    display: block;
+    left: 45%;
 }
 
 
 /* Burguer */
+#menu{
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.3);
+    transition: .6s;
+    z-index: 1000;
+    height: 0px;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+#nav.active #menu {
+    height: calc(70vh - 80px);
+    visibility: visible;
+    overflow-y: auto;
+}
+
+#menu a {
+    display: block;
+    padding: 1rem 0;
+    margin: 0 1rem;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+
+
+#menu-hotel {
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    right: 0;
+    background: #fff;
+    transition: .6s;
+    z-index: 1000;
+    height: 0px;
+    visibility: hidden;
+    overflow-y: hidden;
+}
+
+#nav.active #menu-hotel {
+    height: calc(70vh - 80px);
+    visibility: visible;
+    overflow-y: auto;
+}
+
+#menu-hotel a {
+    display: block;
+    padding: 1rem 0;
+    margin: 0 1rem;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+}
+
 
 .burguer {
-    display: none;
+    display: block;
     cursor: pointer;
 }
 
@@ -105,7 +167,7 @@ label span {
     height: 5px;
     width: 100%;
     border-radius: 30px;
-    background: #414B3B;
+    background: #045580;
     transition: 0.25s esae-in-out;
 }
 
@@ -121,105 +183,13 @@ label span:nth-child(3){
     top: 16px;
 }
 
-
-@media (max-width: 600px) {
-
-    #brasao{
-        margin-left: 50px;
-    }
-
-    #menu {
-        display: block;
-        position: absolute;
-        width: 100%;
-        top: 80px;
-        right: 0;
-        background: rgba(255, 255, 255, 0.3);
-        transition: .6s;
-        z-index: 1000;
-        height: 0px;
-        visibility: hidden;
-        overflow-y: hidden;
-    }
-
-    #nav.active #menu {
-        height: calc(70vh - 80px);
-        visibility: visible;
-        overflow-y: auto;
-    }
-
-    #menu a {
-        padding: 1rem 0;
-        margin: 0 1rem;
-        border-bottom: 2px solid rgba(0,0,0,0.5);
-    }
-
-
-
-    .burguer {
-        display: block;
-        cursor: pointer;
-    }
-
-    #checkbox-menu {
-        max-width: 600px;
-        position: absolute;
-        opacity: 0;
-    }
-
-    #checkbox-menu:checked + label span:nth-child(1) {
-        transform: rotate(-45deg);
-        top: 8px;
-    }
-
-    #checkbox-menu:checked + label span:nth-child(2) {
-        opacity: 0;
-    }
-
-    #checkbox-menu:checked + label span:nth-child(3) {
-        transform: rotate(45deg);
-        top: 8px;
-    }
-
-
-    label {
-        cursor: pointer;
-        position: relative;
-        display: block;
-        height: 22px;
-        width: 30px;
-    }
-
-
-    label span {
-        position: absolute;
-        display: block;
-        height: 5px;
-        width: 100%;
-        border-radius: 30px;
-        background: #414B3B;
-        transition: 0.25s esae-in-out;
-    }
-
-    label span:nth-child(1){
-        top: 0;
-    }
-
-    label span:nth-child(2){
-        top: 8px;
-    }
-
-    label span:nth-child(3){
-        top: 16px;
-    }
-}
-
 /* Slider */
 .slider{
     margin: 0 auto;
     width: 100%;
     height: 500px;
     overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .slides{
@@ -316,4 +286,16 @@ label span:nth-child(3){
 
 #radio3:checked ~ .auto-nav .auto-btn3{
     background: #fff;
+}
+
+
+/* Hoteis */
+
+#demo{
+    margin-top: calc(50px + 80px);
+}
+
+#demo td, table, tr{
+    border: 1px solid black;
+    border-collapse: collapse;
 }

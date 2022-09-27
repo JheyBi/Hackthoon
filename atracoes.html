@@ -1,0 +1,64 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Atrações</title>
+</head>
+<body>
+    <header id="header">
+        <img id="logo" src="assets/images/logotipo-empresa.png" alt="Logotipo-empresa">
+        <img id="brasao" src="assets/images/brasao-band-sem-fundo.png" alt="Brasão bandeirantes">
+        <nav id="nav">
+            <ul id="menu">
+                <li><a href="/">Ínicio</a></li>
+                <li><a href="/">Sobre</a></li>
+                <li><a href="/hotel.html">Hotéis</a></li>
+                <li><a href="/atracoes.html">Atrações</a></li>
+
+            </ul>
+        </nav>
+        <div class="burguer">
+            <input type="checkbox" id="checkbox-menu">
+
+            <label for="checkbox-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+    <script>
+        // Menu responsivo
+        const btnMobile = document.getElementById('checkbox-menu');
+    
+        function toggleMenu(event) {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+    
+        btnMobile.addEventListener('click', toggleMenu);
+    
+        // Fim menu responsivo
+    
+    
+        //API
+        const dbParam = JSON.stringify({table:"hoteis",limit:20});
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function() {
+            const myObj = JSON.parse(this.responseText);
+            let text = "<table border='1'>"
+            for (let x in myObj.hoteis) {
+            text += "<tr><td>" + myObj.hoteis[x].nome + "</td></tr>";
+            }
+            text += "</table>"
+            document.getElementById("demo").innerHTML = text;
+        }
+        xmlhttp.open("GET", "https://uenp.fun/turismo/api/hoteis%22");
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send("x=" + dbParam);
+        </script>
+    
+    </body>
+    </html>
