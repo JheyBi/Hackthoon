@@ -6,15 +6,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Hackthoon</title>
 </head>
-<body>
+<body id="demo">
 
     <header id="header">
-        <a id="logo" href="">Logo</a>
+        <img id="logo" src="assets/images/Logotipo-empresa.png" alt="Logotipo-empresa">
+        <img id="brasao" src="assets/images/brasao-band-sem-fundo.png" alt="Brasão bandeirantes">
         <nav id="nav">
             <ul id="menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/">Sobre</a></li>
                 <li><a href="/">Contato</a></li>
+
             </ul>
         </nav>
         <div class="burguer">
@@ -27,8 +29,67 @@
             </label>
         </div>
     </header>
+
+    <div class="slider">
+        <div class="slides">
+            <!--Radio Buttons-->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+
+            <!--Slide Images-->
+            <div class="slide first">
+                <img src="assets/images/sao-miguel-arcanjo.jpg" alt="São Miguel Arcanjo"/>
+            </div>
+            <div class="slide">
+                <img src="assets/images/viniciola-la-dorni.jpg" alt="Vinicola La Dorni"/>
+            </div>
+            <div class="slide">
+                <img src="assets/images/unknown.png" alt="Hotel Yara"/>
+            </div>
+
+            <!--Auto Navigation-->
+            <div class="auto-nav">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+        </div>
+
+        <!--Manuel Navigation-->
+        <div class="manual-nav">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+        </div>
+    </div>
     
     <script>
+    // Menu responsivo
+    const btnMobile = document.getElementById('checkbox-menu');
+
+    function toggleMenu(event) {
+        const nav = document.getElementById('nav');
+        nav.classList.toggle('active');
+    }
+
+    btnMobile.addEventListener('click', toggleMenu);
+
+    // Fim menu responsivo
+
+
+
+    // Slider
+    let counter = 1;
+    setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 3) {
+            counter = 1;
+        }
+    }, 5000);
+
+    //API
     const dbParam = JSON.stringify({table:"hoteis",limit:20});
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function() {
@@ -45,11 +106,6 @@
     xmlhttp.send("x=" + dbParam);
     </script>
 
-    <footer>
-        <img src="assets/images/wave.svg"
-        
-    </footer>
-    
 </body>
 </html>
 

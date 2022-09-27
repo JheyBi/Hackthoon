@@ -1,9 +1,3 @@
-
-
-
-
-
-
 /* Default styles */
 
 * {
@@ -27,8 +21,8 @@ a:hover {
 }
 
 #logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    width: 80px;
+    height: 80px;
 }
 
 
@@ -42,7 +36,7 @@ a:hover {
     padding: 1rem;
     width: 100%;
     height: 80px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.3);
     position: fixed;
     top: 0;
     left: 0;
@@ -59,6 +53,12 @@ a:hover {
 #menu a {
     display: block;
     padding: .5rem;
+}
+
+#brasao {
+    width: 50px;
+    height: 50px;
+    display: block;
 }
 
 
@@ -124,11 +124,38 @@ label span:nth-child(3){
 
 @media (max-width: 600px) {
 
+    #brasao{
+        margin-left: 50px;
+    }
 
     #menu {
-        display: none;
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.3);
+        transition: .6s;
+        z-index: 1000;
+        height: 0px;
+        visibility: hidden;
+        overflow-y: hidden;
     }
-    
+
+    #nav.active #menu {
+        height: calc(70vh - 80px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    #menu a {
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(0,0,0,0.5);
+    }
+
+
+
     .burguer {
         display: block;
         cursor: pointer;
@@ -185,4 +212,108 @@ label span:nth-child(3){
     label span:nth-child(3){
         top: 16px;
     }
+}
+
+/* Slider */
+.slider{
+    margin: 0 auto;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slides{
+    display: flex;
+    width: 400%;
+    height: 500px;
+}
+
+.slides input{
+    display: none;
+}
+
+.slide{
+    width: 25%;
+    position: relative;
+}
+
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+
+}
+
+.manual-nav{
+    position: absolute;
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.manual-btn{
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 40px;
+}
+
+.manual-btn:hover{
+    background: #fff;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -50%;
+}
+
+.auto-nav{
+    position: absolute;
+    width: 100%;
+    margin-top: 460px;
+    display: flex;
+    justify-content: center;
+}
+
+.auto-nav div{
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgb(14, 187, 245);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.auto-nav div:not(:last-child){
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .auto-nav .auto-btn1{
+    background: #fff;
+}
+
+#radio2:checked ~ .auto-nav .auto-btn2{
+    background: #fff;
+}
+
+#radio3:checked ~ .auto-nav .auto-btn3{
+    background: #fff;
 }
